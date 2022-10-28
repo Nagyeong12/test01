@@ -17,7 +17,7 @@
         <div class="voice-box">
             <div class="voice-border-outer"></div>
             <div class="voice-border-inner"></div>
-            <div class="voice-prime"> 
+            <div class="voice-imgborder"> 
                 <div class="voice-img"></div>
             </div>
         </div>
@@ -93,9 +93,10 @@
         position: absolute;
         border-radius: 100%;
         animation: border-ani-outer 2s infinite ease-in-out;
+        animation-delay: .7s;
         transition: all 1.6s;
         border: 2px solid #00a49d;
-        opacity: .2;
+        opacity: 0;
     }
 
     .voice-border-inner {
@@ -103,13 +104,14 @@
         position: absolute;
         border-radius: 100%;
         animation: border-ani-inner 2s infinite ease-in-out;
+        animation-delay: .7s;
         transition: all 1.6s;
         border: 2px solid #00a49d;
         top: 8px; left: 8px;
-        opacity: .2;
+        opacity: 0;
     }
 
-    .voice-prime {
+    .voice-imgborder {
         width: 66px; height: 66px;
         position: absolute;
         top: 16px; left: 16px;
@@ -126,6 +128,7 @@
         border-radius: 50%;
         position: absolute;
         top: 6px; left: 6px;
+        animation: border-ani-center 1s ease-in-out;
     }
 
     .voice-wrap .info-txt {
@@ -154,10 +157,20 @@
             transform: scale(0.8);
         }
         50% {
-            transform: scale(1); 
+            transform: scale(1);
+            opacity: .2;
         }
         100% {
             transform: scale(0.8);
+        }
+    }
+
+    @keyframes border-ani-center {
+        0% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
         }
     }
 
