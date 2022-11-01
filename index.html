@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font/font.css">
     <title>Document</title>
 </head>
 <body>
     <div class="voice-wrap">
+        <div class="close-btn"></div>
+        <div class="bottom-area">
+            <div class="burger"></div>
+            <input type="text" placeholder="궁금한 사항을 입력해 주세요">
+            <div class="mic"></div>
+        </div>
         <div class="h2-area">
             <h2 class="pre">원하시는 상담을 말씀해 주세요.</h2>
-            <h2 class="main">원하시는 상담을 말씀해 주세요.</h2>
+            <h2 class="main">듣고있어요!</h2>
         </div>
         
         <ul class="example">
@@ -35,7 +42,10 @@
     html {
         width: 100%;
         height: 100%;
+        font-family: 'Noto Sans KR';
     }
+
+    h2 {margin: 0; padding: 0;}
 
     html * {
         box-sizing: border-box;
@@ -55,6 +65,62 @@
         list-style: none;
     }
     /* **************************************** */
+    .close-btn {
+        background: url(images/btn_pop_close.png);
+        width: 30px; height: 30px; background-size: 30px;
+        position: absolute;
+        right: 20px;
+        top: 25px;
+    }
+
+    .bottom-area {
+        width: 100%;
+        height: 60px;
+        position: absolute;
+        bottom: 0;
+        border-radius:  20px 20px 0 0;
+        box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+    }
+
+    .bottom-area .burger {
+        display: inline-block;
+        background: url(images/btn_favorite_menu.png) no-repeat center;
+        width: 40px; height: 40px;
+        background-size: 20px;
+        margin-left: 5px;
+    }
+
+    .bottom-area input {
+        width: 100%;
+        border: 1px solid #e2e2e4;
+        border-radius: 14px;
+        width: calc(100% - 20px);
+        height: 38px;
+        background: #f8f8f8;
+        margin: 11px 11px 11px 0;
+        padding: 5px 10px;
+        color: rgb(17, 17, 17);
+        font-size: 13px;
+        font-weight: 400;
+    }
+
+    .bottom-area .mic {
+        background: url(images/mic-black.png) no-repeat center;
+        width: 34px; height: 34px;
+        position: absolute;
+        right: 15px;
+    }
+    
+    .bottom-area input::placeholder {
+        font-size: 13px;
+    }
+
+    .bottom-area input:focus {
+        outline: none;
+    }
+
     .voice-wrap {
         width: 100%;
         position: absolute;
@@ -66,7 +132,7 @@
 
     .voice-wrap .h2-area {
         position: relative;
-        height: 120px;
+        height: 100px;
     }
 
     .voice-wrap h2 {
@@ -74,6 +140,7 @@
         color: #00a49d;
         text-align: center;
         width: 100%;
+        font-weight: 500;
     }
 
     .voice-wrap h2.pre{
@@ -83,7 +150,7 @@
         left: 0;
         right: 0;
         z-index: 5;
-        animation: text-hide 2.6s;
+        animation: text-hide 2.7s;
         visibility: hidden;
     }
 
@@ -95,7 +162,7 @@
     }
 
     .voice-wrap ul.example {
-        margin: 10px auto 4px;
+        margin: 10px auto;
         color: #333;
     }
 
@@ -103,12 +170,14 @@
         width: 100%;
         text-align: center;
         line-height: 1.5;
+        font-weight: 300;
     }
 
     .voice-box {
         position: relative;
-        width: 142px; height: 142px;
+        width: 122px; height: 122px;
         margin: 0 auto;
+        /* border: 1px dashed gray; */
     }
 
     .voice-box, .voice-box>div {
@@ -116,33 +185,35 @@
     }
 
     .voice-border-outer {
-        width: 140px; height: 140px;
+        width: 120px; height: 120px;
         position: absolute;
         border-radius: 100%;
         animation: border-ani-outer 2s infinite ease-in-out;
-        transition: all 1.6s;
+        animation-delay: 1.85s;
         background-color: rgba(0, 164, 157, 0.3);
         opacity: 0;
+        /* opacity: 1; */
     }
 
     .voice-border-inner {
-        width: 100px; height: 100px;
+        width: 98px; height: 98px;
         position: absolute;
         border-radius: 100%;
         animation: border-ani-inner 2s infinite ease-in-out;
-        transition: all 1.6s;
+        animation-delay: 1.85s;
         background-color: rgba(0, 164, 157, 0.8);
-        top: 20px; left: 20px;
+        top: 11px; left: 11px;
         opacity: 0;
+        /* opacity: 1; */
     }
 
     .voice-imgborder {
         width: 72px; height: 72px;
         position: absolute;
-        top: 34px; left: 34px;
+        top: 24px; left: 24px;
         border-radius: 100%;
         background-color: rgba(0, 164, 157, 0.2);
-        animation-delay: 1.6s;
+        /* background-color: pink; */
     }   
 
     .voice-img {
@@ -157,9 +228,24 @@
     }
 
     .voice-wrap .info-txt {
-        margin-top: 20px;
         text-align: center;
         font-size: 14px;
+        position: absolute;
+        bottom: 85px;
+        left: 0;
+        right: 0;
+    }
+
+    .voice-wrap .info-txt::before {
+        content: "";
+        position: relative;
+        top: 2px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 3px;
+        background: url(images/ic_info.png);
+        background-size: 16px;
     }
 
     @keyframes border-ani-outer {
@@ -198,15 +284,15 @@
 
     @keyframes text-hide {
         0% {
-            visibility: visible;
+            visibility: hidden;
             opacity: 1;
         }
-        50% {
+        80% {
             visibility: visible;
             opacity: 1;
         }
         100% {
-            visibility: visible;
+            visibility: hidden;
             opacity: 0;
         }
     }
