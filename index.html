@@ -8,7 +8,11 @@
 </head>
 <body>
     <div class="voice-wrap">
-        <h2>원하시는 상담을 말씀해 주세요.</h2>
+        <div class="h2-area">
+            <h2 class="pre">원하시는 상담을 말씀해 주세요.</h2>
+            <h2 class="main">원하시는 상담을 말씀해 주세요.</h2>
+        </div>
+        
         <ul class="example">
             <li>"이용내역 조회해줘"</li>
             <li>"남은 한도가 궁금해"</li>
@@ -50,7 +54,7 @@
         padding: 0;
         list-style: none;
     }
-    /* 삭제하기 */
+    /* **************************************** */
     .voice-wrap {
         width: 100%;
         position: absolute;
@@ -60,15 +64,38 @@
         border-radius: 20px 20px 0 0;
     }
 
+    .voice-wrap .h2-area {
+        position: relative;
+        height: 120px;
+    }
+
     .voice-wrap h2 {
         font-size: 21px;
         color: #00a49d;
-        margin: 84px auto 0;
         text-align: center;
+        width: 100%;
+    }
+
+    .voice-wrap h2.pre{
+        background-color: #fff;
+        position: absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        z-index: 5;
+        animation: text-hide 2.6s;
+        visibility: hidden;
+    }
+
+    .voice-wrap h2.main{
+        position: absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
     }
 
     .voice-wrap ul.example {
-        margin: 30px auto 20px;
+        margin: 10px auto 4px;
         color: #333;
     }
 
@@ -80,7 +107,7 @@
 
     .voice-box {
         position: relative;
-        width: 100px; height: 100px;
+        width: 142px; height: 142px;
         margin: 0 auto;
     }
 
@@ -89,7 +116,7 @@
     }
 
     .voice-border-outer {
-        width: 98px; height: 98px;
+        width: 140px; height: 140px;
         position: absolute;
         border-radius: 100%;
         animation: border-ani-outer 2s infinite ease-in-out;
@@ -99,33 +126,34 @@
     }
 
     .voice-border-inner {
-        width: 82px; height: 82px;
+        width: 100px; height: 100px;
         position: absolute;
         border-radius: 100%;
         animation: border-ani-inner 2s infinite ease-in-out;
         transition: all 1.6s;
         background-color: rgba(0, 164, 157, 0.8);
-        top: 8px; left: 8px;
+        top: 20px; left: 20px;
         opacity: 0;
     }
 
     .voice-imgborder {
-        width: 66px; height: 66px;
+        width: 72px; height: 72px;
         position: absolute;
-        top: 16px; left: 16px;
+        top: 34px; left: 34px;
         border-radius: 100%;
         background-color: rgba(0, 164, 157, 0.2);
+        animation-delay: 1.6s;
     }   
 
     .voice-img {
-        width: 54px; height: 54px;
+        width: 56px; height: 56px;
         background: url(images/mic.png) no-repeat center;
         background-size: 26px 26px;
         background-color: #00a49d;
         transform-origin: center;
         border-radius: 50%;
         position: absolute;
-        top: 6px; left: 6px;
+        top: 8px; left: 8px;
     }
 
     .voice-wrap .info-txt {
@@ -139,9 +167,15 @@
             transform: scale(0.8);
             opacity: 0;
         }
+        0% {
+            opacity: 0;
+        }
         50% {
             transform: scale(1);
             opacity: .2;
+        }
+        90% {
+            opacity: 0;
         }
         100% {
             transform: scale(0.8);
@@ -161,5 +195,21 @@
             transform: scale(0.8);
         }
     }
+
+    @keyframes text-hide {
+        0% {
+            visibility: visible;
+            opacity: 1;
+        }
+        50% {
+            visibility: visible;
+            opacity: 1;
+        }
+        100% {
+            visibility: visible;
+            opacity: 0;
+        }
+    }
+
     
 </style>
